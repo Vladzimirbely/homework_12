@@ -24,6 +24,11 @@ def test_enter_data():
         city='Karnal'
     )
 
-    registration_page.open()
-    registration_page.register(user)
-    registration_page.should_have_registered(user)
+    with allure.step('Open registration page'):
+        registration_page.open()
+
+    with allure.step('Fill in user data'):
+        registration_page.register(user)
+
+    with allure.step('Checking user data'):
+        registration_page.should_have_registered(user)
